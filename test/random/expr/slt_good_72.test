@@ -77860,8 +77860,10 @@ SELECT COALESCE ( + MIN( ALL - 42 ), + 11 DIV + 0, + 62 ) AS col1
 -42
 
 skipif mysql # not compatible
-query error
+query I
 SELECT COALESCE ( + MIN ( ALL - 42 ), + 11 / + 0, + 62 ) AS col1
+----
+-42
 
 onlyif mysql # CAST syntax: aggregate syntax: SIGNED type: 
 query I rowsort label-8330
